@@ -1,0 +1,27 @@
+﻿@model WebApiInfSyst.DBwablon.BuyForm
+@{ 
+    ViewData["Title"] = $"{Model.Name} оплата";
+}
+    <div class="buy-item-form-wrapper">
+        <div class="buy-item-form-box">
+            <div class="back-arrow-box"><a class="back-arrow-btn" onclick="history.back(1)">&#8592;</a></div>
+            <div class="buy-item-form-title">@Model.Name</div>
+            <div>Цена: @Model.ACT</div>
+            @if (Model.ACT > Model.Cash) {
+                <div style="color: #ff0000;">На счету: @Model.Cash</div>
+            }
+            else {
+                <div>На счету: @Model.Cash</div>
+            }
+            @if (Model.Error) {
+                <div style="color: #ff0000;">У вас уже есть этот товар</div>
+            }
+            @if (Model.ACT < Model.Cash && !Model.Error) {
+                <div class="buy-item-form-btn-link">@Html.ActionLink("Оплатить", "BuyGIWActive", new { GIW = Model.GIW, Name = Model.Name, ACT = Model.ACT })</div>
+            }
+            else
+            {
+                <div class="buy-item-form-btn-link"><a class="btn-disabled">Оплатить</a></div>
+            }
+        </div>
+    </div>

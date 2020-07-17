@@ -1,0 +1,913 @@
+﻿/* Общие настройки */
+body {
+    font-family: Roboto, sans-serif;
+    color: #5E2222;
+    background-color: #FFFAFA;
+}
+header {
+    background-color: #FFFAFA;
+}
+/* Подменю */
+.navbar-light .navbar-nav .nav-link {
+    color: #5E2222 !important;
+}
+.navbar-light .navbar-brand {
+    color: #5E2222 !important;
+}
+.navbar-nav-chl {
+    display: block;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    height: 0;
+    overflow: hidden;
+    transition: height 0.2s ease-in-out;
+}
+.navbar-nav li:hover > .navbar-nav-chl {
+    height: 13vh;
+}
+.navbar > .container{
+    align-items: flex-start;
+}
+.navbar-nav-login{
+    justify-content: flex-end;
+}
+.nav-menu-flex{
+    align-items: flex-start;
+}
+/* Главная */
+/* Слайдер */
+.section {
+    min-width: 0;
+    width: 100%;
+    height: 60vh;
+    margin: auto auto;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.section p {
+    padding: 15px;
+    font-size: 2em;
+    font-weight: 700;
+}
+.slick-list{
+    overflow: hidden;
+}
+.slick-track{
+    display: flex;
+}
+/* Кнопки слайдера */
+.slider-wrapper {
+    position: relative;
+    margin-top: 10vh;
+}
+.slider-wrapper .slick-arrow {
+    position: absolute;
+    top: 50%;
+    margin-top: -15px;
+    width: 30px;
+    height: 30px;
+    z-index: 10;
+    font-size: 0;
+    outline: none;
+    border: none;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-color: #000000 !important;
+    opacity: 0 !important;
+    transition: opacity 0.3s ease;
+    border-radius: 3px;
+}
+.slider-wrapper:hover .slick-arrow {
+    opacity: 0.5 !important;
+}
+.slider-wrapper .slick-arrow:hover {
+    opacity: 1 !important;
+}
+.slider-wrapper .slick-arrow.slick-prev {
+    background-image: url('../img/prev.png');
+    left: 0;
+}
+.slider-wrapper .slick-arrow.slick-next {
+    background-image: url('../img/next.png');
+    right: 0;
+}
+/* Точки */
+.slider-wrapper .slick-dots{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.slider-wrapper .slick-dots li{
+    margin: 0 5px;
+}
+.slider-wrapper .slick-dots button{
+    font-size: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    background-color: rgba(0,0,0,0.5);
+    transition: background-color 0.3s ease;
+}
+.slider-wrapper .slick-dots li.slick-active button{
+    background-color: rgba(0,0,0,1);
+}
+/* Магазин */
+/* Фильтр игры\инв\обои */
+.top-form-tool {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 78%;
+}
+
+.SearchForm {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.SearchForm input {
+    cursor: pointer;
+    outline: none;
+}
+
+.radio-btn {
+    visibility: hidden;
+    position: absolute;
+}
+
+.top-form-tool > div {
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.top-form-tool > div > label {
+    display: block;
+    margin-right: 7%;
+    cursor: pointer;
+}
+
+.top-form-tool > div > label > p {
+    display: block;
+    padding: 5px 15px;
+    background-color: #E8DCDC;
+    border-radius: 10px;
+    min-width: 100px;
+    text-align: center;
+}
+
+.radio-btn:checked ~ p {
+    border: 1px solid #A28686;
+}
+
+.top-form-tool > input[type="text"] {
+    background-color: inherit;
+    border: none;
+    width: 30%;
+    padding: 5px;
+    margin-right: 2%;
+    outline: none;
+    border-bottom: 1px solid #5B3636;
+    color: #5E2222 !important;
+}
+
+.right-form-tool {
+    display: flex;
+    flex-direction: column;
+    width: 21%;
+}
+
+.right-form-tool > input[type="submit"] {
+    background-color: #E8DCDC;
+    border: 1px solid #A28686;
+    padding: 5px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    color: #5E2222 !important;
+}
+
+.form-order,
+.form-genre {
+    padding: 10px;
+    background-color: #E8DCDC;
+    margin-bottom: 10px;
+    padding-top: 20px;
+    border-radius: 10px;
+}
+
+.form-order > div,
+.form-genre > div {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+}
+
+.form-order > div > input,
+.form-genre > div > input {
+    margin-top: 5px;
+}
+.SearchForm{
+    display: flex;
+    position: relative;
+    width: 100%;
+}
+/* Список */
+.games-wrapper {
+    position: relative;
+    width: 76.5%;
+    background-color: #E8DCDC;
+    border-radius: 5px;
+    padding: 25px;
+}
+.games-wrapper .items {
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    background-color: #FFFAFA;
+    width: 100%;
+    padding: 25px;
+    margin-bottom: 2vh;
+}
+.games-wrapper:nth-last-child(){
+    margin-bottom: 0;
+}
+.games-wrapper .items .img{
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 25%;
+    height: 18vh;
+}
+.games-wrapper .items .text{
+    margin-left: 4%;
+    width: 50%;
+}
+.games-wrapper .items .text p{
+    margin: 0;
+    padding: 0;
+}
+.games-wrapper .items .btn{
+    width: 25%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+.games-wrapper .items .btn a {
+    display: block;
+    background: #E8DCDC;
+    border-radius: 10px;
+    text-decoration: none;
+    padding: 5px 35px;
+    cursor: pointer;
+    color: #5E2222 !important;
+}
+/* Инвентарь */
+.games-wrapper .items .inv-text{
+    width: 50%;
+}
+.games-wrapper .items .inv-text p{
+    margin: 0;
+    padding: 0;
+}
+.games-wrapper .items .inv-btn {
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+.games-wrapper .items .inv-btn a {
+    display: block;
+    background: #E8DCDC;
+    border-radius: 10px;
+    text-decoration: none;
+    padding: 5px 35px;
+    cursor: pointer;
+    color: #5E2222 !important;
+}
+/* Логин/регистрация форма */
+.loginform-wrapper {
+    perspective: 100px;
+}
+.loginForm {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: -2;
+}
+.loginForm p{
+    cursor: default;
+}
+.loginForm > div {
+    position: relative;
+    padding: 35px 60px;
+    background-color: #E8DCDC;
+    color: #5E2222;
+    border-radius: 10px;
+    text-align: center;
+}
+.loginForm > div .login-title{
+    cursor: default;
+    font-size: 1.5em;
+    font-weight: 500;
+}
+.loginForm > div input{
+    outline: none;
+    border: none;
+    background-color: inherit;
+    color: #5E2222;
+}
+.loginForm > div > label{
+    display: flex;
+    width: 400px;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    margin-bottom: 20px;
+}
+.loginForm > div > label p{
+    display: block;
+    width: 25%;
+    margin: 0;
+}
+.loginForm > div > label input[type="text"],
+.loginForm > div > label input[type="password"]{
+    display: block;
+    width: 75%;
+    padding: 5px 20px;
+    border-bottom: 1px solid #5E2222;
+}
+.loginForm > div > div{
+    display: flex;
+    width: 100%;
+    justify-content:space-between;
+    align-items: center;
+    margin-top: 30px;
+}
+.loginForm > div > div a{
+    text-decoration: underline;
+}
+.loginForm > div > div input {
+    padding: 5px 30px;
+    border-radius: 10px;
+    border: 1px solid #5E2222;
+    cursor: pointer;
+}
+#errorReg,
+#errorLog {
+    width: 100%;
+    color: #ff0000;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.1s ease;
+    margin-top: 5px;
+}
+/* Справка */
+.spravka-wrapper{
+    z-index: -2;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.spravka {
+    background-color: #E8DCDC;
+    border: 1px solid #5E2222;
+    border-radius: 10px;
+    padding: 15px 40px;
+}
+.spravka p{
+    margin: 0 0 15px 0;
+    padding: 0;
+}
+.spravka > p {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    font-weight: 500;
+}
+/* Библиотека */
+.lib-wrapper {
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.lib-wrapper .lib-header,
+.lib-wrapper .lib-title-box {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+}
+.lib-wrapper .lib-title-box {
+    margin: 10px 0;
+}
+.lib-wrapper .lib-header p,
+.lib-wrapper .lib-title-box p {
+    display: block;
+    width: 50%;
+    margin-left: 35px;
+    margin-bottom: 0;
+}
+.lib-header {
+    background-color: #E8DCDC;
+    border-radius: 10px;
+    padding: 15px 0;
+}
+.lib-game-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    width: 100%;
+}
+.lib-header p:nth-child(2),
+.lib-title-box p:nth-child(2){
+    margin-left: 55px;
+}
+.lib-game-label,
+.lib-inv-box {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 5px 15px;
+    background-color: #E8DCDC;
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+    padding-top: 15px;
+}
+.lib-game-box > div {
+    width: 50%;
+}
+.lib-game-label-wrapper {
+    width: 48%;
+    margin-right: 2%;
+}
+.lib-game-label .lib-game-label-item {
+    cursor: pointer;
+}
+.lib-game-label .lib-game-label-item,
+.lib-inv-box-wrapper .lib-inv-box p {
+    padding: 10px 20px;
+    background-color: #FFFAFA;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+.lib-inv-box p {
+    display: none;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+.lib-wrapper input[type="radio"] {
+    display: none;
+}
+.lib-wrapper input[type="radio"]:checked ~ p {
+    display: block;
+    opacity: 1;
+}
+.lib-dev-p-item-game,
+.lib-dev-p-item-dev{
+    display: none;
+}
+/* Пополнение счета */
+.addmny-wrapper {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: #E8DCDC;
+    border-radius: 10px;
+    padding: 25px;
+    text-align: center;
+    display: none;
+    flex-direction: column;
+    border: 1px solid #5E2222;
+    opacity: 0;
+}
+.addmny-wrapper p{
+    font-size: 25px;
+    font-weight: 500;
+}
+.addmny-wrapper input{
+    padding: 5px 25px;
+    outline: none;
+    border: none;
+    background-color: inherit;
+    color: #5E2222;
+    border-bottom: 1px solid #5E2222;
+}
+.addmny-wrapper lable{
+    display: block;
+    margin: 15px auto;
+}
+.addmny-wrapper input[type="submit"]{
+    display: block;
+    margin: 15px auto 0;
+    border: 1px solid #5E2222;
+    border-radius: 10px;
+}
+#addmny-error{
+    color: #ff0000;
+    opacity: 0;
+}
+/* Профиль */
+.acc-wrapper{
+    width: 100%;
+    z-index: -2;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.acc-changer-wrapper {
+    padding: 20px 40px;
+    background-color: #E8DCDC;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.acc-changer-wrapper>div{
+    margin-bottom: 15px;
+    width: 100%;
+    min-width: 500px;
+}
+.acc-changer-wrapper>div>form{
+    display: flex;
+    justify-content: space-between;
+}
+.acc-changer-wrapper>div>form>div{
+    width: 30%;
+}
+.acc-changer-wrapper input[type="submit"] {
+    color: #5E2222;
+    width: 100%;
+    padding: 5px 0;
+    background-color: inherit;
+    outline: none;
+    border: 1px solid #5E2222;
+    border-radius: 10px;
+}
+.acc-login {
+    padding: 15px;
+    background-color: #FFFAFA;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin-top: 10px;
+}
+.acc-change-prof{
+    text-align:center;
+}
+.acc-change-login label,
+.acc-change-pass label{
+    display: flex;
+    width: 70%;
+    justify-content: flex-start;
+    align-content: flex-start;
+    padding: 0;
+    margin: 0;
+}
+.acc-change-login label p,
+.acc-change-pass label p{
+    display: block;
+    width: 20%;
+    padding: 0;
+    margin: 0;
+}
+.acc-change-login label input,
+.acc-change-pass label input{
+    display: block;
+    width: 75%;
+    background-color: inherit;
+    border: none;
+    outline: none;
+    padding: 5px 15px;
+    border-bottom: 1px solid #5E2222;
+}
+.acc-wall {
+    overflow-y: auto;
+    width: 68% !important;
+    max-height: 170px;
+    background-color: #FFFAFA;
+}
+.acc-wall input[type="radio"] {
+    display: none;
+}
+.acc-wall label{
+    display: block;
+    width: 100%;
+    height: 150px;
+    margin: 0;
+    padding: 0;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border: none;
+}
+.acc-wall input[type="radio"]:checked ~ label{
+    border: 1px solid #5E2222;
+}
+#change-prof-error{
+    color: #ff0000;
+    text-align: center;
+    width: 100%;
+    margin: 2px;
+    padding: 0;
+}
+/* Форма покупки игры */
+.buy-game-wrapper{
+    position: absolute;
+    z-index: -2;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+.buy-game-box {
+    padding: 20px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-color: #E8DCDC;
+    border-radius: 10px;
+}
+.buy-game-box div{
+    margin-bottom: 10px;
+}
+.buy-game-title{
+    width: 100%;
+    margin-bottom: 20px !important;
+    text-align: center;
+    font-weight: 600;
+}
+.buy-game-link{
+    width: 100%;
+    text-align: center;
+    margin-top: 15px;
+}
+.buy-game-box a {
+    border: 1px solid #5E2222;
+    text-decoration: none;
+    background-color: inherit;
+    padding: 10px 25px;
+    color: #5E2222;
+    border-radius: 10px;
+}
+.back-arrow-box{
+    position: relative;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 0;
+    width: 100%;
+}
+.buy-game-box .back-arrow-btn {
+    position: absolute;
+    top: -5px;
+    left: -10%;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 1.1em;
+    color: #FFFAFA !important;
+    background-color: #5E2222;
+    line-height: 1.15em;
+    padding: 5px;
+    transition: opacity 0.3s ease;
+}
+.buy-game-box .back-arrow-btn:hover{
+    opacity: 0.7;
+}
+/* Форма оплаты */
+.buy-item-form-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: -2;
+}
+.buy-item-form-box {
+    padding: 20px 45px;
+    padding-top: 30px;
+    background-color: #E8DCDC;
+    border-radius: 10px;
+}
+.buy-item-form-box div{
+    width: 100%;
+    margin-bottom: 10px;
+}
+.buy-item-form-title{
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 20px !important;
+}
+.buy-item-form-btn-link {
+    text-align: center;
+    margin-top: 20px !important;
+}
+.buy-item-form-btn-link a {
+    padding: 10px 25px;
+    border-radius: 10px;
+    border: 1px solid #5E2222;
+    text-decoration: none;
+    color: #5E2222 !important;
+}
+.buy-item-form-btn-link a.btn-disabled{
+    color: #a8a8a8 !important;
+}
+.buy-item-form-box .back-arrow-btn {
+    position: absolute;
+    top: -5px;
+    left: -15%;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 1.1em;
+    color: #FFFAFA !important;
+    background-color: #5E2222;
+    line-height: 1.15em;
+    padding: 5px;
+    transition: opacity 0.3s ease;
+}
+.buy-item-form-box .back-arrow-btn:hover {
+    opacity: 0.7;
+}
+/* Форма менеджера */
+/* Конструктор запросов(М) */
+.manager-form-first {
+    display: flex;
+}
+.manager-form-left {
+    width: 100%;
+}
+.maager-form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+.maager-form-header select{
+    outline: none;
+    background-color: #E8DCDC;
+    color: #5E2222;
+}
+.maager-form-header input{
+    outline: none;
+    border: none;
+    background-color: inherit;
+    color: #5E2222 !important;
+    border-bottom: 1px solid #5E2222;
+    padding: 2px 8px;
+}
+.maager-form-header input[type="submit"]{
+    border: 1px solid #5E2222;
+    border-radius: 10px;
+    padding: 5px 10px;
+}
+.maager-form-header p{
+    padding: 0;
+    margin: 0;
+}
+.maager-form-header select{
+    padding: 5px;
+}
+.maager-form-header select,
+.maager-form-header input{
+    margin-left: 2%;
+}
+.manager-first-table {
+    width: 100%;
+    z-index: -2;
+    overflow-y: auto;
+    overflow-x: auto;
+    max-height: 60vh;
+}
+/* Форма редактирования(М) */
+.manageredit-form-wrapper{
+    display: flex;
+    flex-direction: column;
+}
+.manageredit-form-tools{
+    margin-bottom: 25px;
+}
+.manageredit-form-tools p{
+    margin-bottom: 10px;
+    cursor: default;
+}
+.manageredit-form-tools a{
+    cursor: pointer;
+    margin-right: 15px;
+    color: #5E2222;
+    border: 1px solid #5E2222;
+    padding: 5px 15px;
+    text-decoration: none !important;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+.manageredit-form-tools a:hover{
+    border-color: #3d1717;
+    background-color: #edebeb;
+}
+.manageredit-form-tools .manageredit-link-active {
+    border-color: #3d1717;
+    background-color: #edebeb;
+    cursor: default;
+}
+.manageredit-form-search {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.manageredit-form-search p{
+    margin-bottom: 0;
+}
+.manageredit-form-search select{
+    outline: none;
+    background-color: #E8DCDC;
+    color: #5E2222;
+    padding: 5px;
+}
+.manageredit-form-search input{
+    padding: 2px 8px;
+    background-color: inherit;
+    border: none;
+    border-bottom: 1px solid #5E2222;
+    color: #5E2222;
+}
+.manageredit-form-search input[type="submit"] {
+    border: 1px solid #5E2222;
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+.manageredit-form-table{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+.manageredit-form-table input[type="submit"] {
+    background-color: inherit;
+    color: #5E2222;
+    border: 1px solid #5E2222;
+    padding: 5px 10px;
+    border-radius: 10px;
+    margin-left: 1%;
+}
+.table-search-inf{
+    display: none;
+    overflow-y: auto;
+    height: 45vh;
+    max-height: 45vh;
+}
+.SearchEditSearchBtn{
+    opacity: 0;
+}
+.table-search-inf inpit[type=submit] {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}

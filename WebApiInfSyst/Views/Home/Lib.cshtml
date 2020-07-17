@@ -1,0 +1,84 @@
+﻿@model WebApiInfSyst.DBwablon.GetLib
+@{
+    ViewData["Title"] = "Library";
+    var cLogin = Context.Request.Cookies["ClientLogin"];
+}
+
+@if (cLogin != null) {
+    <div class="lib-wrapper">
+        <div class="lib-header">
+            <p id="lib-header-game">Игра</p>
+            <p id="lib-header-dev">Разработчик</p>
+        </div>
+        <div class="lib-title-box">
+            <p>Игры</p>
+            <p>Инвентарь</p>
+        </div>
+        <div class="lib-game-box">
+            <div class="lib-game-label-wrapper">
+                <div class="lib-game-label">
+                    @if (Model.List.Count() > 0) {
+                    @foreach (var item in Model.List) {
+                    <label class="lib-game-label-item" for="@item.GameName" onclick="LibClickLabel(this)">
+                        @item.GameName
+                        <p class="lib-dev-p-item-game">@item.GameName</p>
+                        <p class="lib-dev-p-item-dev">@item.DeveloperName</p>
+                    </label>
+                    }}
+                    else {
+                    <label class="lib-game-label-item" for="">
+                        У вас пока нет игр
+                        <p class="lib-dev-p-item-game">У вас пока нет игр</p>
+                        <p class="lib-dev-p-item-dev"></p>
+                    </label>
+                    }
+                </div>
+            </div>
+            <div class="lib-inv-box-wrapper">
+                <div class="lib-inv-box">
+                    @if (Model.List.Count() > 0) {
+                    @foreach (var item in Model.List) {
+                    <div>
+                        <input class="lib-inv-box-item" name="game-inv" id="@item.GameName" type="radio">
+                        @if (item.GameInv.Count()>0) {
+                        @foreach (var str in item.GameInv) {
+                            <p>@str</p>
+                        }}
+                        else {
+                            <p>У вас пока нет инвентаря для этой игры</p>
+                        }
+                    </div>
+                    }}
+                    else {
+                    <div>
+                        <input class="lib-inv-box-item" name="game-inv" id="" type="radio">
+                        <p style="display: block;">У вас пока нет игр</p>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var libMassGame = document.querySelectorAll('.lib-dev-p-item-game');
+        var libMassDev = document.querySelectorAll('.lib-dev-p-item-dev');
+        var itemG = document.querySelectorAll('.lib-game-label-item');
+        var libGame = document.querySelector('#lib-header-game');
+        var libDev = document.querySelector('#lib-header-dev');
+        libGame.textContent = libMassGame[0].textContent;
+        libDev.textContent = libMassDev[0].textContent;
+        document.querySelectorAll('input[name="game-inv"]')[0].checked = true;
+        itemG[0].style.border = '1px solid #5E2222';
+        function LibClickLabel(e) {
+            for (var i = 0; i < itemG.length; i++) {
+                itemG[i].style.border = 'none';
+            }
+            e.style.border = '1px solid #5E2222';
+            libGame.textContent = e.children[0].textContent;
+            libDev.textContent = e.children[1].textContent;
+        }
+    </script>
+}
+else {
+    <h1>Ну и что ты тут делаешь?<br>Бегом регистрироваться!</h1>
+}

@@ -1,0 +1,12 @@
+﻿@using WebApiInfSyst.Models;
+@{
+    ViewData["Title"] = "Главная";
+}
+@addTagHelper *, GeneralInf
+<div class="slider-wrapper">
+    @foreach (var item in Model.GW)
+    {
+        <div class="section" style="background-image: url(data:image/png;base64,@item.GameCover)">
+        </div>
+    }
+</div>

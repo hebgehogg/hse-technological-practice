@@ -1,0 +1,28 @@
+﻿@model WebApiInfSyst.Models.Client
+@{
+    ViewData["Title"] = "Вход";
+    var error = Context.Request.Cookies["Error"];
+}
+<form id="loginForm" class="loginForm activelrForm" asp-controller="Home" asp-action="loginForm">
+    <div>
+        <p class="login-title">Вход</p>
+        <label class="login-input-lbl" for="loginform-login">
+            <p>Логин</p>
+            <input id="loginform-login" type="text" name="ClientLogin" value="" placeholder="Логин" />
+        </label>
+        <label for="loginform-pass">
+            <p>Пароль</p>
+            <input id="loginform-pass" type="password" name="ClientPassword" value="" placeholder="Пароль" />
+        </label>
+        <div>
+            <a asp-area="" asp-controller="Home" asp-action="Registration">Регистрация</a>
+            <input id="login-btn-form" class="loginform-btn" type="submit" name="name" value="Войти" />
+        </div>
+        @if (error == null) {
+            <div id="errorLog">Неверно введен логин или пароль</div>
+        }
+        else {
+            <div style="opacity: 1;" id="errorLog">Неверно введен логин или пароль</div>
+        }
+    </div>
+</form>

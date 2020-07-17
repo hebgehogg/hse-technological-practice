@@ -1,0 +1,71 @@
+﻿@{
+    ViewData["Title"] = "Конструктор запросов";
+    var cType = Context.Request.Cookies["ClientType"];
+}
+@if (cType == "A")
+{
+<div class="manageredit-form-wrapper">
+    <div class="manageredit-form-tools">
+        <p id="eventStatus">Статус действия</p>
+        <a class="manageredit-link manageredit-link-active" onclick="chManagerEditBtn(this)">Добавить</a>
+        <a class="manageredit-link" onclick="chManagerEditBtn(this)">Изменить</a>
+        <a class="manageredit-link" onclick="chManagerEditBtn(this)">Удалить</a>
+        <a class="manageredit-link" onclick="chManagerEditBtn(this)" asp-controller="Home" asp-action="Export">Экспорт</a>
+    </div>
+    <div class="manageredit-form-search">
+        <p>Выберите имя таблицы для работы с данными: </p>
+        <select id="SearchEditWho">
+            <option id="first-node-op-serEW" value="Staff">Сотрудники</option>
+            <option value="GameGenre">Жанры игры</option>
+            <option value="GemesPrices">Цена игры</option>
+            <option value="Genres">Жанры</option>
+            <option value="Inventory">Инвентарь</option>
+            <option value="InventoryIPrices">Цена инвентаря</option>
+            <option value="WallpaperPrice">Цена обоев</option>
+        </select>
+        <select style="opacity: 0;"  id="SearchEditBy">
+            <option value="StaffName">ФИО</option>
+            <option value="StaffLogin">Логин</option>
+        </select>
+        <input style="opacity: 0;" id="SearchEdit" name="Search" type="text" value="" placeholder="Поиск" />
+        <input type="submit" class="SearchEditSearchBtn" id="SearchEditSearchBtn" value="Поиск" />
+    </div>
+    <div class="table-search-inf">
+        <table class="table table-bordered">
+            <thead>
+                <tr id="manageredit-table-first-header-search">
+                    <th>Действие</th>
+                    <th>ФИО</th>
+                    <th>ЛОГИН</th>
+                </tr>
+            </thead>
+            <tbody id="manager-edit-table-search-date">
+                <tr>
+                    <td><input type="submit" name="submitEvent-me" value="" /></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="manageredit-form-table">
+        <table class="table table-bordered">
+            <thead>
+                <tr id="manageredit-table-first-header">
+                    <th>ФИО</th>
+                    <th>ЛОГИН</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr id="manageredit-first-table-data">
+                </tr>
+                <tr id="manageredit-second-table-data">
+                    <td><input class="manageredit-main-input" id="manageredit-Fio" type="text" name="Fio" value="" /></td>
+                    <td><input class="manageredit-main-input" id="manageredit-login" type="text" name="Login" value="" /></td>
+                </tr>
+            </tbody>
+        </table>
+        <input type="submit" id="SearchEditBtn" value="Выполнить" />
+    </div>
+</div>
+}

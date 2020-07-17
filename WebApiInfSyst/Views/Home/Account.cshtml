@@ -1,0 +1,67 @@
+﻿@model WebApiInfSyst.DBwablon.AccForm
+@{
+    ViewData["Title"] = "Account";
+    var cLogin = Context.Request.Cookies["ClientLogin"];
+    var error = Context.Request.Cookies["Error"];
+}
+
+@if (cLogin != null) {
+    <div style="background-image: url(data:image/png;base64,@Model.MainWall)" class="acc-wrapper">
+        <div class="acc-changer-wrapper">
+            <div class="acc-login">@cLogin</div>
+            <div>Количество игр: @Model.GameCount</div>
+            <div>Количество инвенаря: @Model.InvCount</div>
+            <div class="acc-change-prof">Редактирование профиля</div>
+            <div class="acc-change-login">
+                <form asp-controller="Home" asp-action="changeLogin" method="post">
+                    <label for="acc-change-ClientLogin">
+                        <p>Логин</p>
+                        <input id="acc-change-ClientLogin" type="text" name="ClientLogin" value="" placeholder="Логин" />
+                    </label>
+                    <div>
+                        <input id="acc-change-login-btn" type="submit" name="acc-change-login-btn" value="Обновить" />
+                    </div>
+                </form>
+            </div>
+            <div class="acc-change-pass">
+                <form asp-controller="Home" asp-action="changePass" method="post">
+                    <label for="acc-change-ClientPassword">
+                        <p>Пароль</p>
+                        <input id="acc-change-ClientPassword" type="text" name="ClientPassword" value="" placeholder="Пароль" />
+                    </label>
+                    <div>
+                        <input id="acc-change-pass-btn" type="submit" name="acc-change-pass-btn" value="Обновить" />
+                    </div>
+                </form>
+            </div>
+            @if (error == null) {
+                <div id="change-prof-error" style="opacity: 0;">Ошибка, повторите ввод</div>
+            }
+            else {
+                <div id="change-prof-error" style="opacity: 1;">Ошибка, повторите ввод</div>
+            }
+            <div>Обои</div>
+            <div class="acc-change-wall">
+                <form asp-controller="Home" asp-action="changeWall" method="post">
+                    <div class="acc-wall">
+                        @foreach (var item in Model.Wall) {
+                            <div>
+                                <input id="@item.WallpaperID" type="radio" name="WallpaperID" value="@item.WallpaperID" />
+                                <label for="@item.WallpaperID" style="background-image: url(data:image/png;base64,@item.WallpaperPhoto)"></label>
+                            </div>
+                        }
+                    </div>
+                    <div>
+                        <input id="acc-change-wall-btn" type="submit" name="acc-change-wall-btn" value="Обновить" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.querySelector('input[type="radio"]').checked = true;
+    </script>
+}
+else {
+    <h1>Ну и что ты тут делаешь?<br>Бегом регистрироваться!</h1>
+}

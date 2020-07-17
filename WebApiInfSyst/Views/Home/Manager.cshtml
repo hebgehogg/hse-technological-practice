@@ -1,0 +1,45 @@
+﻿@{ 
+    ViewData["Title"] = "Конструктор запросов";
+    var cType = Context.Request.Cookies["ClientType"];
+}
+@if (cType == "A") {
+    <div class="manager-form-wrapper">
+        <div class="manager-form-first">
+            <div class="manager-form-left">
+                <div class="maager-form-header">
+                    <p>Выберите имя таблицы для работы с данными: </p>
+                    <select id="SearchWho">
+                        <option value="Staff">Сотрудники</option>
+                        <option value="GameGenre">Жанры игры</option>
+                        <option value="GemesPrices">Цена игры</option>
+                        <option value="Genres">Жанры</option>
+                        <option value="Inventory">Инвентарь</option>
+                        <option value="InventoryIPrices">Цена инвентаря</option>
+                        <option value="Games">Игры</option>
+                        <option value="Wallpapers">Обои</option>
+                        <option value="WallpaperPrice">Цена обоев</option>
+                    </select>
+                    <select id="SearchBy">
+                        <option value="StaffName">ФИО</option>
+                        <option value="StaffLogin">Логин</option>
+                    </select>
+                    <input id="Search" name="Search" type="text" value="" placeholder="Поиск">
+                    <input type="submit" id="SearchBtn" value="Обновить" />
+                </div>
+                <div class="manager-first-table">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr id="manager-table-first-header">
+                                <th>ФИО</th><th>ЛОГИН</th>
+                            </tr>
+                        </thead>
+                        <tbody id="first-table-data">
+                            <tr>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+}

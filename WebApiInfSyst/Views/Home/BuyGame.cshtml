@@ -1,0 +1,21 @@
+﻿@model WebApiInfSyst.DBwablon.GetBuyGame
+@{ 
+    ViewData["Title"] = Model.GameName;
+    var cLogin = Context.Request.Cookies["ClientLogin"];
+}
+    <div class="buy-game-wrapper" style="background-image: url(data:image/png;base64,@Model.GameCover)">
+        <div class="buy-game-box">
+            <div class="back-arrow-box"><a class="back-arrow-btn" onclick="history.back(1)">&#8592;</a></div>
+            <div class="buy-game-title">@Model.GameName</div>
+            <div class="buy-game-genre">Жанры: @Model.GameGenre</div>
+            <div class="buy-game-price">Цена: @Model.GamePrice</div>
+            <div class="buy-game-link">
+            @if (cLogin != null) {
+                @Html.ActionLink("Купить", "BuyGIW", new { GIW = "G", ItemName = @Model.GameName })
+            }
+            else {
+                <a asp-area="" asp-controller="Home" asp-action="Registration">Зарегистрироваться</a>
+            }
+            </div>
+        </div>
+    </div>

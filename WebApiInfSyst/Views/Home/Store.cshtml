@@ -1,0 +1,74 @@
+﻿@using WebApiInfSyst.Models;
+@{
+    ViewData["Title"] = "Магазин";
+    var cLogin = Context.Request.Cookies["ClientLogin"];
+}
+@addTagHelper *, StoreList
+
+    <div class="SearchForm">
+        <div class="top-form-tool">
+            <div>
+                <label for="gameRadio">
+                    <input checked class="radio-btn" id="gameRadio" type="radio" name="Type" value="G">
+                    <p>Игры</p>
+                </label>
+                <label for="invRadio">
+                    <input class="radio-btn" id="invRadio" type="radio" name="Type" value="I">
+                    <p>Инвентарь</p>
+                </label>
+                <label for="wallRadio">
+                    <input class="radio-btn" id="wallRadio" type="radio" name="Type" value="W">
+                    <p>Обои</p>
+                </label>
+            </div>
+            <input id="search-form-search" type="text" value="" name="Name" placeholder="Поиск" autocomplete="off" />
+        </div>
+        <div class="right-form-tool">
+            <input id="search-form-btn" type="submit" value="Поиск">
+            <div class="form-order">
+                <div>
+                    <input checked type="radio" name="order" value="По названию">
+                    <p>По названию</p>
+                </div>
+                <div>
+                    <input type="radio" name="order" value="По убывающей цене">
+                    <p>По убывающей цене</p>
+                </div>
+                <div>
+                    <input type="radio" name="order" value="По возрастающей цене">
+                    <p>По возрастающей цене</p>
+                </div>
+            </div>
+            <div class="form-genre">
+                @foreach (var genre in @Model.Genre) {
+                    <div>
+                        <input type="checkbox" name="Genre" value="@genre.GenreName" />
+                        <p>@genre.GenreName</p>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+@if (@Model.GIW == "G") {
+    <div class="games-wrapper">
+        @foreach (var item in @Model.GL) {
+            <div class="items">
+                <div class="img" style="background-image: url(data:image/png;base64,@item.Gamecover);"></div>
+                <div class="text">
+                    <p class="StoreName">@item.Gamename</p>
+                    <p class="StorePrice">Цена: @item.Price</p>
+                    <p class="StoreGenre">Жанры: @item.Genre</p>
+                    <p class="StoreGenre">Разработчик: @item.Dev</p>
+                </div>
+                <div class="btn">
+                    @Html.ActionLink("Купить", "BuyGame",new { GameName = @item.Gamename })
+                </div>
+            </div>
+        }
+    </div>
+}
+
+<script>
+    document.querySelector('.games-wrapper').style.marginTop = -(document.querySelector('.SearchForm').offsetHeight - document.querySelector('#search-form-btn').offsetHeight - 25) + 'px';
+    document.querySelector('.games-wrapper').style.minHeight = document.querySelector('.SearchForm').offsetHeight - document.querySelector('#search-form-btn').offsetHeight - 30 + 'px';
+</script>
